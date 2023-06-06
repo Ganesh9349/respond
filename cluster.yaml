@@ -10,9 +10,9 @@ vpc:
   cidr: "172.31.0.0/16"
   subnets:
     public:
-      us-east-1d: { id: subnet-0e65a4c7d650a4f81 }
-      us-east-1f: { id: subnet-0752beca728019eb3 }
-      us-east-1b: { id: subnet-0e72a2ce1970b2061 }
+      us-east-1d: { id:subnet-0e65a4c7d650a4f81 }
+      us-east-1f: { id:subnet-0752beca728019eb3 }
+      us-east-1b: { id:subnet-0e72a2ce1970b2061 }
 
 managedNodeGroups:
   - name: ng-db
