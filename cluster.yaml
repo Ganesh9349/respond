@@ -1,0 +1,36 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: step-eks-cluster
+  region: us-east-1
+
+vpc:
+  id: "vpc-0c117578d4f0cc924"
+  cidr: "172.31.0.0/16"
+  subnets:
+    public:
+      us-east-1d: { id: subnet-0e65a4c7d650a4f81 }
+      us-east-1f: { id: subnet-0752beca728019eb3 }
+      us-east-1b: { id: subnet-0e72a2ce1970b2061 }
+
+managedNodeGroups:
+  - name: ng-db
+    instanceType: t3.small
+    labels: { role: builders }
+    minSize: 2
+    maxSize: 4
+    ssh: 
+      allow: true #will use ~/.ssh/id_rsa.pub as the default ssh key
+    tags:
+      Name: ng-db
+  - name: ng-spot
+    instanceType: t3.medium
+    labels: { role: builders }
+    minSize: 3
+    maxSize: 6
+    spot: true
+    ssh: 
+      allow: true #will use ~/.ssh/id_rsa.pub as the default ssh key
+    tags:
+      Name: ng-spot
